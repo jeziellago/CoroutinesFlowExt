@@ -1,0 +1,2 @@
+include ':flowext'
+rootProject.name='Coroutines Flow Extensions'
