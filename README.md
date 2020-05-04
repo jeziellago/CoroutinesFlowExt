@@ -9,6 +9,14 @@ val publisher = flowPublisher {
     emit(2)
     emit(3)
 }
+
+// or create publisher from source Flow
+val myFlowEmitter = flow { emit(1) } // "source" Flow (emitter)
+
+val publisher = FlowPublisher(source = myFlowEmitter)
+
+// or use Flow extension
+val publisher = myFlowEmitter.asPublisher()
 ```
 
 ```kotlin
