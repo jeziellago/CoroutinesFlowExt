@@ -50,6 +50,6 @@ allprojects {
 - Module `build.gradle` 
 ```
 dependencies {
-    implementation 'com.github.jeziellago:CoroutinesFlowExt:VERSION'
+    implementation 'com.github.jeziellago:CoroutinesFlowExt:0.1.0'
 }
 ```
