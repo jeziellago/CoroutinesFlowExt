@@ -45,6 +45,22 @@ publisher.open()
 publisher.unsubscribe(subscriberA)
 ```
 
+### Easy collect for StateFlow
+Use `observeState`:
+```kotlin
+coroutineScope.observeState(stateFlow) {
+  // collect value
+}
+``` 
+Instead of:
+```kotlin
+coroutineScope.launch {
+    stateFlow.collect {
+        // collect value
+    }
+}
+```
+
 ## Add dependencies
 - Project `build.gradle` 
 ```
@@ -58,6 +74,6 @@ allprojects {
 - Module `build.gradle` 
 ```
 dependencies {
-    implementation 'com.github.jeziellago:CoroutinesFlowExt:0.1.0'
+    implementation 'com.github.jeziellago:CoroutinesFlowExt:0.1.1'
 }
 ```
