@@ -1,7 +1,7 @@
 # CoroutinesFlowExt
 Reactive components with Kotlin Flow
 
-### FlowPublisher and FlowSubscriber
+### FlowPublisher / FlowSubscriber
 ```kotlin
 // Publisher
 val publisher = flowPublisher {
@@ -45,7 +45,20 @@ publisher.open()
 publisher.unsubscribe(subscriberA)
 ```
 
-### Easy collect for StateFlow
+### FlowEmitter
+```kotlin
+val emitter = FlowEmitter<Int>()
+
+// use emitter as FlowPublisher
+val flowPublisher = emitter.asPublisher()
+
+// emit values
+emitter.emit(1)
+emitter.emit(2)
+emitter.emit(3)
+...
+```
+### Easy collect using StateFlow
 Use `observeState`:
 ```kotlin
 coroutineScope.observeState(stateFlow) {
@@ -74,6 +87,6 @@ allprojects {
 - Module `build.gradle` 
 ```
 dependencies {
-    implementation 'com.github.jeziellago:CoroutinesFlowExt:0.1.1'
+    implementation 'com.github.jeziellago:CoroutinesFlowExt:0.1.2'
 }
 ```

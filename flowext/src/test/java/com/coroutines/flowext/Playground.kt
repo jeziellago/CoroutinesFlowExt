@@ -38,20 +38,21 @@ fun CoroutineScope.addSubscribers(publisher: FlowPublisherChannel) {
 
 fun main() = runBlocking {
 
-    val flowPublisher = flowPublisher {
-        var value = 0
-        while (value <= 20) {
+    val emitter = FlowEmitter<Int>()
+    val flowPublisher = emitter.asPublisher()
 
-            emit(value)
-            println("[PUBLISH] $value")
-            value++
+    launch {
+        repeat(21) {
+            emitter.emit(it)
+            println("[PUBLISH] $it")
             delay(800)
         }
     }
-
     addSubscribers(flowPublisher)
 
-    launch { flowPublisher.open() }
+    launch {
+        flowPublisher.open()
+    }
 
     println("START!")
 }
