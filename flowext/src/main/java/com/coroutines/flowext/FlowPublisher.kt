@@ -29,7 +29,6 @@ class FlowPublisher<T : Any>(source: Flow<T>) : FlowPublisherChannel {
         .onEach { value -> emitBroadcast { it.notify(value) } }
         .catch { error ->
             emitBroadcast { it.notifyError(error) }
-            throw error
         }.onCompletion {
             emitBroadcast { it.close() }
         }
